@@ -19,18 +19,8 @@ public class WrapperManager : MonoBehaviour
         }
     }
 
-    public class BubbleGenerationProfile
-    {
-        public int RowXAmount = 10;
-        public int RowYAmount = 10;
-        public Vector2 BubbleSize = Vector2.one;
-        public Vector2 BubbleMargin = new Vector2(0.25f, 0.25f);
-        public Vector2 BubbleBorder = new Vector2(0.25f, 0.25f);
-        public bool Zigzag = true;
-    }
-
     [SerializeField]
-    public BubbleGenerationProfile CurrentProfile = new BubbleGenerationProfile();
+    public BubbleGenerationProfile CurrentProfile;
 
     public bool[,] PopMarker;
 
@@ -43,14 +33,19 @@ public class WrapperManager : MonoBehaviour
     public Transform BubbleMask;
 
     // Start is called before the first frame update
+    const string ProfileOption = "ProfileOption";
     void Start()
     {
-        if (PopPlayer is null)
+        //Load profile option
+        if (PlayerPrefs.HasKey(ProfileOption))
         {
-            PopPlayer = GameObject.Find(nameof(PopPlayer)).GetComponent<AudioSource>();
+            string value = PlayerPrefs.GetString(ProfileOption);
+            CurrentProfile = JsonUtility.FromJson<BubbleGenerationProfile>(ProfileOption);
         }
-        GenerateBubbleSheet();
-        ResizeSheetBackground();
+        if (PopPlayer is null)
+            PopPlayer = GameObject.Find(nameof(PopPlayer)).GetComponent<AudioSource>();
+
+        RegenerateAllBubbles();
     }
 
     // Update is called once per frame
@@ -58,12 +53,33 @@ public class WrapperManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            foreach (var obj in ChildBubbles)
-            {
-                Destroy(obj);
-            }
-            ChildBubbles.Clear();
+            ClearAllBubbles();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RegenerateAllBubbles();
+        }
+    }
+
+    void ClearAllBubbles()
+    {
+        foreach (var obj in ChildBubbles)
+        {
+            Destroy(obj);
+        }
+        ChildBubbles.Clear();
+    }
+
+    public void RegenerateAllBubbles()
+    {
+        //Recreate bubbles
+        if (ChildBubbles.Count > 0)
+        {
+            //Destroy all first
+            ClearAllBubbles();
+        }
+        GenerateBubbleSheet();
+        ResizeSheetBackground();
     }
 
     public void PlayPop(ClickPop info)
