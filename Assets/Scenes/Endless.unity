@@ -318,11 +318,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c6ff8997c3912745b6f423e4a5b8e96, type: 3}
   PopPlayer: {fileID: 596805510}
   BubblePrototype: {fileID: 8228255616234673861, guid: 00445d87d580ff840b9d6d45d36c4c98, type: 3}
-  RowXAmount: 10
-  RowYAmount: 10
-  RowMargin: {x: 0.1, y: 0.1}
-  BubbleSize: {x: 1, y: 1}
-  BorderSize: {x: -1, y: -1}
   ChildBubbles: []
   BubbleSheet: {fileID: 1970384599}
   BubbleSheetBackground: {fileID: 2088672958}
@@ -420,6 +415,7 @@ GameObject:
   - component: {fileID: 1648869394}
   - component: {fileID: 1648869393}
   - component: {fileID: 1648869392}
+  - component: {fileID: 1648869395}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -492,6 +488,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648869395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648869391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe3cac8aa8361a4d8193e86c3265e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 5
+  dragSpeed: 15
+  normalizedScale: 250
 --- !u!1 &1970384599
 GameObject:
   m_ObjectHideFlags: 0
