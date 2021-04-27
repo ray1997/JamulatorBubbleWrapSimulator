@@ -44,8 +44,14 @@ public class WrapperManager : MonoBehaviour
         }
         if (PopPlayer is null)
             PopPlayer = GameObject.Find(nameof(PopPlayer)).GetComponent<AudioSource>();
+        CurrentProfile.PropertyChanged += SaveSetting;
 
         RegenerateAllBubbles();
+    }
+
+    private void SaveSetting(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        PlayerPrefs.SetString(ProfileOption, JsonUtility.ToJson(CurrentProfile));
     }
 
     // Update is called once per frame
