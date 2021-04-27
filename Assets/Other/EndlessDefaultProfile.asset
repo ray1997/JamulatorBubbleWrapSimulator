@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8793c6614c5ef5a48971dbc99cb7fbb7, type: 3}
   m_Name: EndlessDefaultProfile
   m_EditorClassIdentifier: 
-  _row: 10
-  _column: 10
-  _size: {x: 1, y: 1}
-  _margin: {x: 0.25, y: 0.25}
-  _border: {x: 0.25, y: 0.25}
-  _zigzag: 1
+  RowXAmount: 50
+  RowYAmount: 50
+  BubbleSize: {x: 0, y: 0}
+  BubbleMargin: {x: 0, y: 0}
+  BubbleBorder: {x: 0, y: 0}
+  Zigzag: 0

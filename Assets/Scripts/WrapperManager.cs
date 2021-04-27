@@ -36,22 +36,10 @@ public class WrapperManager : MonoBehaviour
     const string ProfileOption = "ProfileOption";
     void Start()
     {
-        //Load profile option
-        if (PlayerPrefs.HasKey(ProfileOption))
-        {
-            string value = PlayerPrefs.GetString(ProfileOption);
-            CurrentProfile = JsonUtility.FromJson<BubbleGenerationProfile>(ProfileOption);
-        }
         if (PopPlayer is null)
             PopPlayer = GameObject.Find(nameof(PopPlayer)).GetComponent<AudioSource>();
-        CurrentProfile.PropertyChanged += SaveSetting;
 
         RegenerateAllBubbles();
-    }
-
-    private void SaveSetting(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-    {
-        PlayerPrefs.SetString(ProfileOption, JsonUtility.ToJson(CurrentProfile));
     }
 
     // Update is called once per frame
