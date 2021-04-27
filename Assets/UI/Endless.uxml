@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="style.uss" />
+    <ui:VisualElement name="endlessPage" style="align-items: flex-start; justify-content: center; height: 100%; width: 15%; min-width: 42px;">
+        <ui:Button name="settingToggle" text="" display-tooltip-when-elided="true" class="icon-button" style="height: 40px; width: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+        <ui:Label text="" display-tooltip-when-elided="true" class="icon-button" style="color: rgba(255, 255, 255, 255); margin-top: -8px; margin-bottom: -8px; -unity-font-definition: url(&apos;/Assets/Other/segmdl2v2 SDF.asset&apos;);" />
+        <ui:Button name="popToggle" text="" display-tooltip-when-elided="true" class="icon-button" style="height: 40px; width: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+        <ui:Button name="boopToggle" text="" display-tooltip-when-elided="true" class="icon-button" style="height: 40px; width: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+    </ui:VisualElement>
+</ui:UXML>

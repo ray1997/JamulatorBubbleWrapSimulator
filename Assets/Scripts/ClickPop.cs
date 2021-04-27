@@ -11,9 +11,6 @@ public class ClickPop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (SettingController.Instance != null)
-            if (SettingController.Instance.IsSettingShow)
-                return;
         if (PopIndexX < 0 || PopIndexY < 0)
             return;
         if (!IsPop)
