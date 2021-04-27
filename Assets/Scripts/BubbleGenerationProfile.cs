@@ -6,13 +6,19 @@ using UnityEngine;
 public class BubbleGenerationProfile : ScriptableObject
 {
     [Range(5, 100)]
-    public int RowXAmount = 10;
+    public int BubbleRowAmount = 10;
 
     [Range(5, 100)]
-    public int RowYAmount = 10;
+    public int BubbleColumnAmount = 10;
 
     public Vector2 BubbleSize = Vector2.one;
     public Vector2 BubbleMargin = new Vector2(0.25f, 0.25f);
     public Vector2 BubbleBorder = new Vector2(0.25f, 0.25f);
     public bool Zigzag = true;
+    /// <summary>
+    /// Determine direction to zigzag,
+    /// true to zigzag on row
+    /// false to zigzag on column
+    /// </summary>
+    public bool ZigzagOnRow = true;
 }

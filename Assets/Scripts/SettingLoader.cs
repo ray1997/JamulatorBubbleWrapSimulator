@@ -9,7 +9,7 @@ public class SettingLoader : MonoBehaviour
     public Slider ColumnSize;
     private void OnEnable()
     {
-        RowSize.SetValueWithoutNotify(WrapperManager.Instance.CurrentProfile.RowXAmount);
-        ColumnSize.SetValueWithoutNotify(WrapperManager.Instance.CurrentProfile.RowYAmount); 
+        RowSize.SetValueWithoutNotify(WrapperManager.Instance.CurrentProfile.BubbleRowAmount);
+        ColumnSize.SetValueWithoutNotify(WrapperManager.Instance.CurrentProfile.BubbleColumnAmount); 
     }
 }

@@ -87,10 +87,10 @@ public class WrapperManager : MonoBehaviour
 
     public void GenerateBubbleSheet()
     {
-        PopMarker = new bool[CurrentProfile.RowXAmount, CurrentProfile.RowYAmount];
-        for (int x = 0;x < CurrentProfile.RowXAmount; x++)
+        PopMarker = new bool[CurrentProfile.BubbleRowAmount, CurrentProfile.BubbleColumnAmount];
+        for (int x = 0;x < CurrentProfile.BubbleRowAmount; x++)
         {
-            for (int y = 0;y < CurrentProfile.RowYAmount; y++)
+            for (int y = 0;y < CurrentProfile.BubbleColumnAmount; y++)
             {
                 //Generate bubble for the row
                 var bubble = Instantiate(BubblePrototype, transform);
@@ -98,6 +98,7 @@ public class WrapperManager : MonoBehaviour
                 bubble.transform.parent = BubbleSheet.transform;
                 //Set position
                 bubble.transform.position = GetPositionForBubble(x, y);
+                
                 //Set name and bubble info
                 bubble.name = $"Bubble {x}-{y}";
                 ClickPop bubbleInfo = bubble.GetComponent<ClickPop>();
@@ -110,24 +111,41 @@ public class WrapperManager : MonoBehaviour
 
     public Vector3 GetPositionForBubble(float x, float y)
     {
+        bool shouldzigzag = (CurrentProfile.ZigzagOnRow ? Mathf.RoundToInt(x) : Mathf.RoundToInt(y)) % 2 == 0;
         //Move X and Y half from where it was
-        x -= CurrentProfile.RowXAmount / 2;
-        y -= CurrentProfile.RowYAmount / 2;
+        x -= CurrentProfile.BubbleRowAmount / 2;
+        y -= CurrentProfile.BubbleColumnAmount / 2;
         //Add half a size of bubble size as a padding for even amount of bubble
-        if (CurrentProfile.RowXAmount % 2 == 0)
+        if (CurrentProfile.BubbleRowAmount % 2 == 0)
             x += CurrentProfile.BubbleSize.x / 4;
-        if (CurrentProfile.RowYAmount % 2 == 0)
+        if (CurrentProfile.BubbleColumnAmount % 2 == 0)
             y += CurrentProfile.BubbleSize.y / 4;
         float axisX = ((CurrentProfile.BubbleSize.x + CurrentProfile.BubbleMargin.x) * x) + CurrentProfile.BubbleBorder.x;
         float axisY = ((CurrentProfile.BubbleSize.y + CurrentProfile.BubbleMargin.y) * y) + CurrentProfile.BubbleBorder.y;
-        //Subtract half wrapper size
-        //float axisX = 
-        //float axisX = ((CurrentProfile.BubbleSize.x + CurrentProfile.BubbleMargin.x) * x) - 
-        //    (CurrentProfile.BubbleSize.x + CurrentProfile.BubbleMargin.x + 
-        //    (CurrentProfile.RowXAmount % 2 == 0 ? CurrentProfile.BubbleSize.x / 2 : 0));
-        //float axisY = 0;
-        //axisY = ((CurrentProfile.BubbleSize.y + CurrentProfile.BubbleMargin.y) * y) - ((CurrentProfile.BubbleSize.y + CurrentProfile.BubbleMargin.y) * halfY);
-        
+        //Zigzag consideration
+        Debug.Log($"Currently using zigzag generation: {CurrentProfile.Zigzag} |" +
+            $"Current position is consider zigzag?: {shouldzigzag}");
+        if (CurrentProfile.Zigzag && shouldzigzag)
+        {
+            Debug.Log($"Currently zigzag on: {(CurrentProfile.ZigzagOnRow ? "row" : "column")}");
+            Debug.Log($"x = {x} | x % 2 = {x % 2}");
+            Debug.Log($"y = {y} | y % 2 = {y % 2}");
+            if (CurrentProfile.ZigzagOnRow && shouldzigzag)
+            {
+                Debug.Log($"Current AxisX = {axisX} | Current AxisY = {axisY}");
+                axisY -= (CurrentProfile.BubbleSize.x / 2) + (CurrentProfile.BubbleMargin.x / 2);
+                Debug.Log($"After alteration: {axisX} : {axisY}");
+            }
+
+            if (!CurrentProfile.ZigzagOnRow && shouldzigzag)
+            {
+                Debug.Log($"Current AxisX = {axisX} | Current AxisY = {axisY}");
+                axisX -= (CurrentProfile.BubbleSize.y / 2) + (CurrentProfile.BubbleMargin.y / 2);
+                Debug.Log($"After alteration: {axisX} : {axisY}");
+            }
+
+        }
+
         return new Vector3(axisX, axisY);
 
     }
@@ -135,12 +153,12 @@ public class WrapperManager : MonoBehaviour
     private void ResizeSheetBackground()
     {
         //X Scale
-        float XScale = (CurrentProfile.RowXAmount * CurrentProfile.BubbleSize.x) + 
-            (CurrentProfile.RowXAmount * CurrentProfile.BubbleMargin.x) + 
+        float XScale = (CurrentProfile.BubbleRowAmount * CurrentProfile.BubbleSize.x) + 
+            (CurrentProfile.BubbleRowAmount * CurrentProfile.BubbleMargin.x) + 
             CurrentProfile.BubbleBorder.x;
         //Y Scale
-        float YScale = (CurrentProfile.RowYAmount * CurrentProfile.BubbleSize.y) +
-            (CurrentProfile.RowYAmount * CurrentProfile.BubbleMargin.y) +
+        float YScale = (CurrentProfile.BubbleColumnAmount * CurrentProfile.BubbleSize.y) +
+            (CurrentProfile.BubbleColumnAmount * CurrentProfile.BubbleMargin.y) +
             CurrentProfile.BubbleBorder.y;
         //Set
         BubbleSheetBackground.transform.localScale = new Vector3(XScale, YScale);

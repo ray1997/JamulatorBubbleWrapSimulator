@@ -45,13 +45,13 @@ public class UIController : MonoBehaviour
 
     public float BubbleRowAmount
     {
-        get => WrapperManager.Instance.CurrentProfile.RowXAmount;
-        set => WrapperManager.Instance.CurrentProfile.RowXAmount = Mathf.RoundToInt(value);
+        get => WrapperManager.Instance.CurrentProfile.BubbleRowAmount;
+        set => WrapperManager.Instance.CurrentProfile.BubbleRowAmount = Mathf.RoundToInt(value);
     }
 
     public float BubbleColumnAmount
     {
-        get => WrapperManager.Instance.CurrentProfile.RowYAmount;
-        set => WrapperManager.Instance.CurrentProfile.RowYAmount = Mathf.RoundToInt(value);
+        get => WrapperManager.Instance.CurrentProfile.BubbleColumnAmount;
+        set => WrapperManager.Instance.CurrentProfile.BubbleColumnAmount = Mathf.RoundToInt(value);
     }
 }
