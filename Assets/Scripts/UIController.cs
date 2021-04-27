@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (CurrentPage == Page.Main)
+                CurrentPage = Page.Setting;
+            else
+                CurrentPage = Page.Main;
+        }
+    }
+
     public GameObject[] Pages;
 
     public enum Page
