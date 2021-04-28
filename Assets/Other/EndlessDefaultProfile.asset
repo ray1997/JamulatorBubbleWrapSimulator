@@ -15,7 +15,7 @@ MonoBehaviour:
   BubbleRowAmount: 10
   BubbleColumnAmount: 10
   BubbleSize: {x: 1, y: 1}
-  BubbleMargin: {x: 0.1, y: 0.1}
+  BubbleMargin: {x: 0.3, y: 0.3}
   BubbleBorder: {x: 0.25, y: 0.25}
   Zigzag: 1
   ZigzagOnRow: 1

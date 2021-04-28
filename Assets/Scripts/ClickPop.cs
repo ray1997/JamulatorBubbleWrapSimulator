@@ -22,7 +22,7 @@ public class ClickPop : MonoBehaviour
         //Play pop sound
         WrapperManager.Instance.PlayPop(this);
         //Mark as popped
-        //As a test, for now mark color red onto sprite
+
     }
 
     public void ValidatePop()
