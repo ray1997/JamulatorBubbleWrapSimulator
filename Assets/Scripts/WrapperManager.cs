@@ -32,9 +32,8 @@ public class WrapperManager : MonoBehaviour
     public GameObject BubbleSheet;
     public Transform BubbleSheetBackground;
     public Transform BubbleMask;
+    public Sprite[] BubbleWrinkles;
 
-    // Start is called before the first frame update
-    const string ProfileOption = "ProfileOption";
     void Start()
     {
         if (PopPlayer is null)
@@ -140,6 +139,7 @@ public class WrapperManager : MonoBehaviour
                 ClickPop bubbleInfo = bubble.GetComponent<ClickPop>();
                 bubbleInfo.PopIndexX = x;
                 bubbleInfo.PopIndexY = y;
+                bubbleInfo.RandomizeWrinkle();
                 ChildBubbles.Add(bubble);
                 if (CurrentProfile.Zigzag)
                 {
