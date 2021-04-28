@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8793c6614c5ef5a48971dbc99cb7fbb7, type: 3}
   m_Name: EndlessDefaultProfile
   m_EditorClassIdentifier: 
-  BubbleRowAmount: 26
-  BubbleColumnAmount: 27
+  BubbleRowAmount: 10
+  BubbleColumnAmount: 10
   BubbleSize: {x: 1, y: 1}
   BubbleMargin: {x: 0.1, y: 0.1}
   BubbleBorder: {x: 0.25, y: 0.25}
