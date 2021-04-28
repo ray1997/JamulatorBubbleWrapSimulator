@@ -1999,12 +1999,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d8472ef375f154498f80fa4e4c6dbcb, type: 3}
   - {fileID: 8300000, guid: 4de9f3c47945dcb4fa5d450e478c1a52, type: 3}
   - {fileID: 8300000, guid: 1c6ff8997c3912745b6f423e4a5b8e96, type: 3}
+  BassBoostedPopSounds:
+  - {fileID: 8300000, guid: 72ad022ac614a114eab305d8b8ca24cb, type: 3}
+  - {fileID: 8300000, guid: 5bf5a2a62f07352459bb6148b600c127, type: 3}
+  - {fileID: 8300000, guid: 1f5a321bfdd60b845a44f3631c4d6ddc, type: 3}
+  - {fileID: 8300000, guid: 15079c98047316049a2e8048dac348ca, type: 3}
+  - {fileID: 8300000, guid: 07e35d609f07be24cb1b641945a81939, type: 3}
   PopPlayer: {fileID: 596805510}
   BubblePrototype: {fileID: 8228255616234673861, guid: 00445d87d580ff840b9d6d45d36c4c98, type: 3}
   ChildBubbles: []
   BubbleSheet: {fileID: 1970384599}
   BubbleSheetBackground: {fileID: 2088672958}
   BubbleMask: {fileID: 1078152795}
+  GlobalNoSoundCooldown: 0
+  GlobalBassBoostedCooldown: 0
+  PassCooldownThreshold: 50
+  UseEffectThreshold: 0.01
+  UseSilentEffectThreshold: 0.9
 --- !u!1 &1078152793
 GameObject:
   m_ObjectHideFlags: 0

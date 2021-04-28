@@ -25,6 +25,7 @@ public class WrapperManager : MonoBehaviour
     public bool[,] PopMarker;
 
     public AudioClip[] PopSounds;
+    public AudioClip[] BassBoostedPopSounds;
     public AudioSource PopPlayer;
     public GameObject BubblePrototype;
     public List<GameObject> ChildBubbles = new List<GameObject>();
@@ -42,7 +43,9 @@ public class WrapperManager : MonoBehaviour
         RegenerateAllBubbles();
     }
 
-    // Update is called once per frame
+    public float GlobalNoSoundCooldown = 0;
+    public float GlobalBassBoostedCooldown = 0;
+    public float PassCooldownThreshold = 30;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -53,6 +56,8 @@ public class WrapperManager : MonoBehaviour
         {
             RegenerateAllBubbles();
         }
+        GlobalBassBoostedCooldown += Time.deltaTime;
+        GlobalNoSoundCooldown += Time.deltaTime;
     }
 
     void ClearAllBubbles()
@@ -76,13 +81,44 @@ public class WrapperManager : MonoBehaviour
         ResizeSheetBackground();
     }
 
+    [Range(0,1)]
+    public float UseEffectThreshold = 0.01f;
+    [Range(0,1)]
+    public float UseSilentEffectThreshold = 0.9f;
     public void PlayPop(ClickPop info)
     {
+        //Mark as pop on pop marker
+        PopMarker[info.PopIndexX, info.PopIndexY] = true;
+        //Randomize a chance to quite or bassboosted
+        var random = Random.value;
+        Debug.Log($"Random chance got {random} | {(random < UseEffectThreshold ? "randomize effect" : "no effect")}");
+        if (random < UseEffectThreshold) //1% chance?
+        {
+            var effect = Random.value;
+            bool silentornot = effect < UseSilentEffectThreshold; //90% chance of silent | 10% chance of bass boosted
+            Debug.LogWarning($"random effect got {effect} | {(silentornot ? "No sound" : "Bass boosted")}");
+            if (silentornot)
+            {
+                if (GlobalNoSoundCooldown > PassCooldownThreshold)
+                {
+                    GlobalNoSoundCooldown = 0;
+                    return;
+                }
+            }
+            else
+            {
+                if (GlobalBassBoostedCooldown > PassCooldownThreshold)
+                {
+                    GlobalBassBoostedCooldown = 0;
+                    //Bass boosted
+                    PopPlayer.PlayOneShot(BassBoostedPopSounds[Random.Range(0, BassBoostedPopSounds.Length)]);
+                    return;
+                }
+            }
+        }
         //Move pop player to that bubble
         //Then
         PopPlayer.PlayOneShot(PopSounds[Random.Range(0, PopSounds.Length)]);
-        //Mark as pop
-        PopMarker[info.PopIndexX, info.PopIndexY] = true;
     }
 
     public void GenerateBubbleSheet()
