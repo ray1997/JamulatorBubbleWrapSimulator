@@ -25,4 +25,16 @@ public class ClickPop : MonoBehaviour
         SpriteRenderer render = gameObject.GetComponent<SpriteRenderer>();
         render.color = Color.red;
     }
+
+    public void ValidatePop()
+    {
+        if (WrapperManager.Instance.PopMarker[PopIndexX, PopIndexY])
+        {
+            //Turn pop without sound
+            //Mark as popped
+            //As a test, for now mark color red onto sprite
+            SpriteRenderer render = gameObject.GetComponent<SpriteRenderer>();
+            render.color = Color.red;
+        }
+    }
 }

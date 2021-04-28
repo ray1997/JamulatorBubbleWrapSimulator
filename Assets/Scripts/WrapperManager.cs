@@ -105,6 +105,22 @@ public class WrapperManager : MonoBehaviour
                 bubbleInfo.PopIndexX = x;
                 bubbleInfo.PopIndexY = y;
                 ChildBubbles.Add(bubble);
+                if (CurrentProfile.Zigzag)
+                {
+                    if (CurrentProfile.ZigzagOnRow)
+                    {
+                        if (x % 2 == 0 && y == 0)
+                        {
+                            PopMarker[x, y] = true;
+                            bubbleInfo.ValidatePop();
+                        }
+                        //else if (x % 2 == 1 && y == CurrentProfile.BubbleColumnAmount - 1)
+                        //{
+                        //    PopMarker[x, y] = true;
+                        //    bubbleInfo.ValidatePop();
+                        //}
+                    }
+                }
             }
         }
     }
