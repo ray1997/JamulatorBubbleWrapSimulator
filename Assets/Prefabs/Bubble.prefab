@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5919763093125933719
 Transform:
   m_ObjectHideFlags: 0
@@ -79,8 +79,8 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 4
-  m_BackSortingOrder: 3
+  m_FrontSortingOrder: -1
+  m_BackSortingOrder: -1
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &8228255616234673861
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9440ee9a9cb24a6468a01cb575e7945f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.20784314}
   m_FlipX: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141b540d6a3919d42ac5af5ce63e7799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WrinkleMask: {fileID: 4921959772664121646}
   Wrinkle: {fileID: 2765226219946111234}
   PopIndexX: -1
   PopIndexY: -1
@@ -272,7 +273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: -1
   m_Sprite: {fileID: -5824293995290173598, guid: d3f3de18ae471d34eb79dcc619aa6630, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_FlipX: 0

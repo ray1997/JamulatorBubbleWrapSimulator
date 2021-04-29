@@ -216,5 +216,4 @@ public class WrapperManager : MonoBehaviour
         BubbleSheetBackground.transform.localScale = new Vector3(XScale, YScale);
         BubbleMask.transform.localScale = new Vector3(XScale, YScale);
     }
-
 }

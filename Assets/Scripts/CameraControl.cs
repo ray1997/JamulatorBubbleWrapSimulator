@@ -20,7 +20,7 @@ public class CameraControl : MonoBehaviour
     {
         //Zoom
         scale -= Input.mouseScrollDelta.y;
-        scale = Mathf.Clamp(scale, 0.25f, 50f);
+        scale = Mathf.Clamp(scale, 0.25f, 25f);
         Camera.main.orthographicSize = scale;
         //Drag pan
         Vector3 position = transform.position;

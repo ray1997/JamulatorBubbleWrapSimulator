@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClickPop : MonoBehaviour
 {
+    public SpriteMask WrinkleMask;
     public SpriteRenderer Wrinkle;
     public int PopIndexX;
     public int PopIndexY;
